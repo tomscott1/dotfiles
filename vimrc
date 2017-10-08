@@ -1,5 +1,33 @@
 " ~/.vimrc
 
+" Load pathogen (plugins will load from ~/.vim/bundle/
+execute pathogen#infect()
+
+" plugins
+" nerdcommenter https://github.com/scrooloose/nerdcommenter.git
+" nerdTree https://github.com/scrooloose/nerdtree.git
+" lightline https://github.com/itchyny/lightline.vim.git
+" vim-fugitve https://github.com/tpope/vim-fugitive.git
+
+" Load NERDTree on open
+autocmd vimenter * NERDTree
+autocmd VimEnter * wincmd p
+
+" Ignore useless files
+let NERDTreeIgnore=['\.DS_Store', '\~$', '\.swp', '\.py']
+
+" Close NERDTree if it is the last buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Don't user NERDTree as a project drawer
+let NERDTreeHijackNetrw=1
+
+" Jump to file in NerdTree using leader+j
+nmap <leader>j :NERDTreeFind<CR>
+
+" Show hidden files in NERDTree
+let NERDTreeShowHidden=1
+
 filetype on
 syntax on
 colorscheme Tomorrow-Night
