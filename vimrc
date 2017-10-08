@@ -8,9 +8,10 @@ execute pathogen#infect()
 " nerdTree https://github.com/scrooloose/nerdtree.git
 " lightline https://github.com/itchyny/lightline.vim.git
 " vim-fugitve https://github.com/tpope/vim-fugitive.git
+" auto-pairs https://github.com/jiangmiao/auto-pairs.git
 
 " Load NERDTree on open
-autocmd vimenter * NERDTree
+autocmd vimenter * NERDTree .
 autocmd VimEnter * wincmd p
 
 " Ignore useless files
@@ -24,6 +25,11 @@ let NERDTreeHijackNetrw=1
 
 " Jump to file in NerdTree using leader+j
 nmap <leader>j :NERDTreeFind<CR>
+
+" Open NERDTree in current dir
+set autochdir
+let NERDTreeChDirMode=2
+nnoremap <leader>n :NERDTree .<CR>
 
 " Show hidden files in NERDTree
 let NERDTreeShowHidden=1
